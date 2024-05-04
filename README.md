@@ -30,10 +30,10 @@ This will index the `.\\Data` folder and save it to `.\\indexedFolders` (the sta
 `-force or -f`
 This will force the app to index the folder again and save it to `.\\indexedFolders` (if you don't force a re-index, and the folder has already been indexed, the app will just load it)
 
-`-query or -q` followed by the string you want to search for e.g. `print`
-This will print all the occurrences of `print` in the given folder
+`-query or -q`
+This will indicate that you want to query the folder after indexing
 
 ### Example usage
-`gradlew run --args="-p .\\Data -f -q print"`
-This will index `.\\Data folder` and print all the occurrences of `print`
+`C:........MainKT -p .\\Data -f -q`
+This will index `.\\Data folder` and start the query process until you choose to stop it
 
