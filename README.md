@@ -15,11 +15,11 @@ A CLI tool that indexes a given folder and allows efficient searching for string
 
 ```
 4. Open the project in IntelliJ IDEA
-5. Run the project in IntelliJ IDEA (this will run without command line arguments)
-6. Copy the command that IntelliJ IDEA used to run the app (you can find it in the bottom window)
+5. Run the project in IntelliJ IDEA (this will run the app without command line arguments)
+6. Copy the command that IntelliJ IDEA used to run the app (you can find it in the bottom window), should look like this `C:........MainKT`
 7. Open terminal and navigate to the repository
-8. Paste the command you coppied
-9. Add command line arguments and run
+8. Paste the command you coppied (`C:........MainKT`)
+9. Add command line arguments and run the app
 
 
 ### Arguments guide 
