@@ -117,21 +117,16 @@ fun main(args: Array<String>) {
                         break
                     }
 
-                    // Search using the trie structure
-                    val searchResults = trie.searchSubstrings(searchString)
-
                     // Print search results
-                    if (searchResults.isNotEmpty()) {
+                    if (trie.search(searchString)) {
                         println("Search Results:")
-                        searchResults.forEach { token ->
-                            // Retrieve token information from the HashMap
-                            val tokenInfoList = tokenMap[token.hashCode().toString()]
-                            tokenInfoList?.forEach { tokenInfo ->
-                                println("Token '$token' found in file '${tokenInfo.fp}' at position ${tokenInfo.p}")
-                            }
-                            if (tokenInfoList != null) {
+                        // Retrieve token information from the HashMap
+                        val tokenInfoList = tokenMap[searchString.hashCode().toString()]
+                        tokenInfoList?.forEach { tokenInfo ->
+                            println("String '$searchString' found in file '${tokenInfo.fp}' at position ${tokenInfo.p}")
+                        }
+                        if (tokenInfoList != null) {
                             println("Found ${tokenInfoList.size} occurrences in the indexed folder")
-                            }
                         }
                     } else {
                         println("No matches found for '$searchString'.")
@@ -175,22 +170,17 @@ fun main(args: Array<String>) {
                         break
                     }
 
-                    // Search using the trie structure
-                    val searchResults = trie.searchSubstrings(searchString)
-
                     // Print search results
-                    if (searchResults.isNotEmpty()) {
+                    if (trie.search(searchString)) {
                         println("Search Results:")
-                        searchResults.forEach { token ->
                             // Retrieve token information from the HashMap
-                            val tokenInfoList = tokenMap[token.hashCode().toString()]
+                            val tokenInfoList = tokenMap[searchString.hashCode().toString()]
                             tokenInfoList?.forEach { tokenInfo ->
-                                println("Token '$token' found in file '${tokenInfo.fp}' at position ${tokenInfo.p}")
+                                println("String '$searchString' found in file '${tokenInfo.fp}' at position ${tokenInfo.p}")
                             }
                             if (tokenInfoList != null) {
                             println("Found ${tokenInfoList.size} occurrences in the indexed folder")
                             }
-                        }
                     } else {
                         println("No matches found for '$searchString'.")
                     }
