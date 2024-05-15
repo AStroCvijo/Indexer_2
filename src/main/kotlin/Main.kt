@@ -68,7 +68,6 @@ fun main(args: Array<String>) {
 
         // File paths for the tokenMap.json and trie.json
         val tokenMapFilePath = ".\\indexedFolders\\" + folderPath + "_tokenMap.json"
-        val trieFilePath = ".\\indexedFolders\\" + folderPath + "_trie.json"
 
         // Logic if force = false
         if(!force){
