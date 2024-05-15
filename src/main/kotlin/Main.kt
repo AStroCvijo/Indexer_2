@@ -52,7 +52,6 @@ fun main(args: Array<String>) {
         }
         if(args[i] == "-c" || args[i] == "-case"){
             case = true
-            force = true
         }
     }
 
