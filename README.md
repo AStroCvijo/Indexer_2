@@ -2,6 +2,7 @@
 # File Indexer - CLI tool
 
 A CLI tool that indexes a given folder and allows efficient searching for string occurrences.
+**The code changed after the deadline for JetBrains internship application because I found a better approach to the problem. If you only find the code that was submitted before the deadline relavant here is that version of the code**
 
 ## Instructions
 
