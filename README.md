@@ -33,6 +33,9 @@ This will force the app to index the folder again and save it to `.\\indexedFold
 `-query or -q`
 This will indicate that you want to query the folder after indexing
 
+`-case or -c`
+This will indicate that you want the search to be case-sensitive (if you choose case-sensitive search re-index will be forced)
+
 ### Example usage
 `C:........MainKT -p .\\Data -f -q`
 This will index `.\\Data folder` and start the query process until you choose to stop it
