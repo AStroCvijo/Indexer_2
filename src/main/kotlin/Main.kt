@@ -1,13 +1,19 @@
 import java.io.File
 import kotlin.system.exitProcess
 
+// Define the TokenInfo class
+data class TokenInfo(
+    val t: String, // token
+    val fp: String, // path
+    val p: Int,    // position
+    val h: String  //hash
+)
+
 // HashMap to store hashed tokens
 var tokenMap = HashMap<String, MutableList<TokenInfo>>()
 
 // Master function for inserting tokens
-fun insertToken(tokenInfo: TokenInfo, trie: Trie) {
-    // Insert into the Trie
-    trie.insert(tokenInfo.t)
+fun insertToken(tokenInfo: TokenInfo) {
 
     // Insert into the HashMap
     if (!tokenMap.containsKey(tokenInfo.h)) {
@@ -27,13 +33,11 @@ fun main(args: Array<String>) {
         return
     }
 
-    // Create an instance of the trie
-    val trie = Trie()
-
     // Initialize arguments
     var folderPath = ""
     var force = false
     var query = false
+    var case = false
 
     // Parse arguments
     for (i in args.indices){
@@ -45,6 +49,10 @@ fun main(args: Array<String>) {
         }
         if(args[i] == "-q" || args[i] == "-query"){
             query = true
+        }
+        if(args[i] == "-c" || args[i] == "-case"){
+            case = true
+            force = true
         }
     }
 
@@ -73,10 +81,6 @@ fun main(args: Array<String>) {
                     if (tokenMap.isNotEmpty()) {
                         println("tokenMap loaded from $tokenMapFilePath successfully.")
                     }
-                    trie.root = loadTrieFromJson(trieFilePath).root
-                    if (trie.root.child.isNotEmpty()) {
-                        println("trie loaded from $trieFilePath successfully.")
-                    }
                 }
                 else{
                     println("tokenMap for $tokenMapFilePath already exists.")
@@ -86,13 +90,10 @@ fun main(args: Array<String>) {
             } else {
                 // Loops over the folder and its subfolders and tokenizes the words in files
                 val allowedExtensions = readAllowedExtensionsFromFile()
-                loopFilesAndSubfolders(folder, trie, allowedExtensions)
+                loopFilesAndSubfolders(folder, allowedExtensions, case)
 
                 // Save tokenMap to JSON file
                 saveTokenMapToJson(tokenMapFilePath)
-
-                // Save trie to JSON file
-                saveTrieToJson(trie.root, trieFilePath)
             }
 
             // Starts prompting the user for query's
@@ -117,15 +118,19 @@ fun main(args: Array<String>) {
                         break
                     }
 
+                    // Retrieve token information from the HashMap
+                    var tokenInfoList = tokenMap[searchString.lowercase().hashCode().toString()]
+                    if(case){
+                        tokenInfoList = tokenMap[searchString.hashCode().toString()]
+                    }
+
                     // Print search results
-                    if (trie.search(searchString)) {
-                        println("Search Results:")
-                        // Retrieve token information from the HashMap
-                        val tokenInfoList = tokenMap[searchString.hashCode().toString()]
-                        tokenInfoList?.forEach { tokenInfo ->
-                            println("String '$searchString' found in file '${tokenInfo.fp}' at position ${tokenInfo.p}")
-                        }
-                        if (tokenInfoList != null) {
+                    if (tokenInfoList != null) {
+                        if (tokenInfoList.isNotEmpty()) {
+                            println("Search Results:")
+                            tokenInfoList.forEach { tokenInfo ->
+                                println("String '$searchString' found in file '${tokenInfo.fp}' at position ${tokenInfo.p}")
+                            }
                             println("Found ${tokenInfoList.size} occurrences in the indexed folder")
                         }
                     } else {
@@ -140,13 +145,10 @@ fun main(args: Array<String>) {
         else{
             // Loops over the folder and its subfolders and tokenizes the words in files
             val allowedExtensions = readAllowedExtensionsFromFile()
-            loopFilesAndSubfolders(folder, trie, allowedExtensions)
+            loopFilesAndSubfolders(folder, allowedExtensions, case)
 
             // Save tokenMap to JSON file
             saveTokenMapToJson(tokenMapFilePath)
-
-            // Save trie to JSON file
-            saveTrieToJson(trie.root, trieFilePath)
 
             // Starts prompting the user for query's
             if(query){
@@ -170,17 +172,21 @@ fun main(args: Array<String>) {
                         break
                     }
 
+                    // Retrieve token information from the HashMap
+                    var tokenInfoList = tokenMap[searchString.lowercase().hashCode().toString()]
+                    if(case){
+                        tokenInfoList = tokenMap[searchString.hashCode().toString()]
+                    }
+
                     // Print search results
-                    if (trie.search(searchString)) {
-                        println("Search Results:")
-                            // Retrieve token information from the HashMap
-                            val tokenInfoList = tokenMap[searchString.hashCode().toString()]
-                            tokenInfoList?.forEach { tokenInfo ->
+                    if (tokenInfoList != null) {
+                        if (tokenInfoList.isNotEmpty()) {
+                            println("Search Results:")
+                            tokenInfoList.forEach { tokenInfo ->
                                 println("String '$searchString' found in file '${tokenInfo.fp}' at position ${tokenInfo.p}")
                             }
-                            if (tokenInfoList != null) {
                             println("Found ${tokenInfoList.size} occurrences in the indexed folder")
-                            }
+                        }
                     } else {
                         println("No matches found for '$searchString'.")
                     }
