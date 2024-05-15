@@ -66,13 +66,13 @@ fun main(args: Array<String>) {
             return
         }
 
-        // File paths for the tokenMap.json and trie.json
+        // File paths for the tokenMap.json
         val tokenMapFilePath = ".\\indexedFolders\\" + folderPath + "_tokenMap.json"
 
         // Logic if force = false
         if(!force){
             // Check if they already exist
-            if (File(tokenMapFilePath).exists() && File(trieFilePath).exists()) {
+            if (File(tokenMapFilePath).exists()) {
 
                 if(query){
                     tokenMap = loadTokenMapFromJson(tokenMapFilePath)
@@ -82,7 +82,6 @@ fun main(args: Array<String>) {
                 }
                 else{
                     println("tokenMap for $tokenMapFilePath already exists.")
-                    println("trie for $trieFilePath already exists.")
                 }
 
             } else {
