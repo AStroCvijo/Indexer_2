@@ -25,7 +25,7 @@ A CLI tool that indexes a given folder and allows efficient searching for string
 9. Add command line arguments and run the app
 
 
-### Arguments guide 
+## Arguments guide 
 
 `-path or -p` followed by path to the folder you want to index e.g. `.\\Data`
 This will index the `.\\Data` folder and save it to `.\\indexedFolders` (the starting location of .\\\ is inside the app folder, so either move to folder you want to index there or navigate to it)
@@ -39,7 +39,17 @@ This will indicate that you want to query the folder after indexing
 `-case or -c`
 This will indicate that you want the search to be case-sensitive
 
-### Example usage
-`C:........MainKT -p .\\Data -f -q`
-This will index `.\\Data folder` and start the query process until you choose to stop it
+## Examples
+
+| Command                                       | Description                                                          |
+|-----------------------------------------------|----------------------------------------------------------------------|
+| `C:........MainKT -p .\\Data`                 | Index a Folder Without Re-indexing or Querying                       |
+| `C:........MainKT -p .\\Data -f`              | Index a Folder and Force Re-indexing                                 |
+| `C:........MainKT -p .\\Data -q`              | Index a Folder and Query Without Case Sensitivity                    |
+| `C:........MainKT -p .\\Data -f -q`           | Index a Folder, Force Re-indexing, and Query Without Case Sensitivity|
+| `C:........MainKT -p .\\Data -q -c`           | Index a Folder, Query with Case Sensitivity                          |
+| `C:........MainKT -p .\\Data -f -q -c`        | Index a Folder, Force Re-indexing, and Query with Case Sensitivity   |
+| `C:........MainKT -p .\\Documents -q`         | Index a Different Folder and Query Without Case Sensitivity          |
+| `C:........MainKT -p .\\AnotherFolder -f -q -c`| Index a Folder, Force Re-indexing, and Perform Case-sensitive Search |
+
 
