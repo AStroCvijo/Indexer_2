@@ -9,7 +9,7 @@ A CLI tool that indexes a given folder and allows efficient searching for string
 ## Instructions
 
 1. Download the repository
-2. Set up `allowedExtensions.txt` file int the root directory e.g.
+2. Set up `allowedExtensions.txt` file in the root directory e.g.
 ```txt
 
   txt
