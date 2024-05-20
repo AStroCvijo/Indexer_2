@@ -17,12 +17,12 @@ A CLI tool that indexes a given folder and allows efficient searching for string
   py
 
 ```
-4. Open the project in IntelliJ IDEA
-5. Run the project in IntelliJ IDEA (this will run the app without command line arguments)
-6. Copy the command that IntelliJ IDEA used to run the app (you can find it in the bottom window), should look like this `C:........MainKT`
-7. Open the terminal and navigate to the repository
-8. Paste the command you coppied (`C:........MainKT`)
-9. Add command line arguments and run the app
+3. Open the project in IntelliJ IDEA
+4. Run the project in IntelliJ IDEA (this will run the app without command line arguments)
+5. Copy the command that IntelliJ IDEA used to run the app (you can find it in the bottom window), should look like this `C:........MainKT`
+6. Open the terminal and navigate to the repository
+7. Paste the command you coppied (`C:........MainKT`)
+8. Add command line arguments and run the app
 
 
 ## Arguments guide 
