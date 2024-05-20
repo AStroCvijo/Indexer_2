@@ -136,7 +136,7 @@ fun main(args: Array<String>) {
                         if (tokenInfoList.isNotEmpty()) {
                             println("Search Results:")
                             tokenInfoList.forEach { tokenInfo ->
-                                println("String '$searchString' found in file '${tokenInfo.fp}' in line ${tokenInfo.l}, position in file ${tokenInfo.p}")
+                                println("String '$searchString' found in '${tokenInfo.fp}', line ${tokenInfo.l}, position ${tokenInfo.p}")
                                 if (highlight){
                                     val file = File(tokenInfo.fp)
                                     var line = file.readText()
@@ -211,7 +211,7 @@ fun main(args: Array<String>) {
                         if (tokenInfoList.isNotEmpty()) {
                             println("Search Results:")
                             tokenInfoList.forEach { tokenInfo ->
-                                println("String '$searchString' found in file '${tokenInfo.fp}' in line ${tokenInfo.l}, position in file ${tokenInfo.p}")
+                                println("String '$searchString' found in '${tokenInfo.fp}', line ${tokenInfo.l}, position ${tokenInfo.p}")
                                 if (highlight){
                                     val file = File(tokenInfo.fp)
                                     var line = file.readText()
