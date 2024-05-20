@@ -8,7 +8,7 @@ A CLI tool that indexes a given folder and allows efficient searching for string
 
 ## Instructions
 
-1. Download the repository
+1. Clone the repository `git clone https://github.com/AStroCvijo/Indexer_2`
 2. Set up `allowedExtensions.txt` file in the root directory e.g.
 ```txt
 
@@ -39,6 +39,9 @@ This will indicate that you want to query the folder after indexing
 `-case or -c`
 This will indicate that you want the search to be case-sensitive
 
+`-highlight or -h`
+This will print the line in which the string is located and highlight it
+
 ## Examples
 
 | Command                                       | Description                                                          |
@@ -46,6 +49,7 @@ This will indicate that you want the search to be case-sensitive
 | `C:........MainKT -p .\\Data`                 | Index a Folder Without Re-indexing or Querying                       |
 | `C:........MainKT -p .\\Data -f`              | Index a Folder and Force Re-indexing                                 |
 | `C:........MainKT -p .\\Data -q`              | Index a Folder and Query Without Case Sensitivity                    |
+| `C:........MainKT -p .\\Data -q -h`           | Index a Folder, Query Without Case Sensitivity and Highlight         |
 | `C:........MainKT -p .\\Data -f -q`           | Index a Folder, Force Re-indexing, and Query Without Case Sensitivity|
 | `C:........MainKT -p .\\Data -q -c`           | Index a Folder, Query with Case Sensitivity                          |
 | `C:........MainKT -p .\\Data -f -q -c`        | Index a Folder, Force Re-indexing, and Query with Case Sensitivity   |
