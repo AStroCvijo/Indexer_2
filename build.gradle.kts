@@ -12,6 +12,7 @@ repositories {
 
 dependencies {
     implementation("com.google.code.gson:gson:2.8.9")
+    implementation("org.fusesource.jansi:jansi:2.3.2")
 }
 
 dependencies {
